@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seafood Store — Premium Project Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0077be;
+            --secondary: #00a8cc;
+            --accent: #ff7e5f;
+            --bg: #0a0e17;
+            --text: #e0f2f1;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            background: radial-gradient(circle at top right, #1a2a44, #0a0e17);
+            min-height: 100vh;
+        }
+
+        .waves {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            background: url('https://www.transparenttextures.com/patterns/wavecut.png');
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #b0bec5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(0, 119, 190, 0.3);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem;
+            background: rgba(0, 119, 190, 0.2);
+            padding: 0.5rem;
+            border-radius: 10px;
+        }
+
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--secondary); }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
+
+        .screenshot-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .screenshot-card p {
+            padding: 1rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+            color: #607d8b;
+        }
+
+        .urdu {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Seafood Store</h1>
+        <p>A premium frontend eCommerce MVP built with Flutter, featuring ocean-glassmorphism design and robust cart logic.</p>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
+            <button class="tab-btn" onclick="showTab('features')">Features</button>
+            <button class="tab-btn" onclick="showTab('screenshots')">Screenshots</button>
+            <button class="tab-btn" onclick="showTab('tools')">Tools</button>
+            <button class="tab-btn" onclick="showTab('edit-guide')">Edit Guide</button>
+        </div>
+
+        <!-- Overview Section -->
+        <div id="overview" class="content-section active">
+            <div class="grid">
+                <div class="card">
+                    <h3>🇵🇰 اردو میں تعارف</h3>
+                    <p class="urdu">سی فوڈ اسٹور ایپ ایک جدید آن لائن مارکیٹ پلیس ہے جہاں سے آپ تازہ مچھلی اور جھینگے خرید سکتے ہیں۔ یہ ایپ خوبصورت اینیمیشنز اور تیز رفتاری کے ساتھ بنائی گئی ہے۔</p>
+                </div>
+                <div class="card">
+                    <h3>🇬🇧 Project Goals</h3>
+                    <p>Designed to provide a high-end shopping experience for seafood lovers. Features persistent cart, real-time price updates, and a smooth checkout flow.</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>⚓ Technology Stack</h3>
+                <p>Built using <code>Flutter</code> and <code>Dart</code>. State management via <code>Provider</code>. Sophisticated UI using <code>Google Fonts</code>, <code>Animate Do</code>, and <code>Carousel Slider</code>.</p>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div id="features" class="content-section">
+            <div class="grid">
+                <div class="card">
+                    <h3>🛒 Commercial Features</h3>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">⚖️</span>
+                        <div><strong>Dynamic Pricing:</strong> Automatic price adjustment based on weight selections.</div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon"> persistent</span>
+                        <div><strong>Safe Cart:</strong> Shopping cart items stay saved even if the app is closed.</div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💳</span>
+                        <div><strong>Streamlined Checkout:</strong> Fast 3-step process to complete orders.</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>✨ Design Excellence</h3>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🌊</span>
+                        <div><strong>Ocean UI:</strong> Themed glassmorphism aesthetic tailored for seafood.</div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🚀</span>
+                        <div><strong>Micro-Animations:</strong> Smooth stagger animations for every list item.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots Section -->
+        <div id="screenshots" class="content-section">
+            <div class="screenshot-container">
+                <div class="screenshot-card">
+                    <img src="screenshot_home.png" alt="Home Screen">
+                    <p>Discovery Home</p>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot_capture.png" alt="Listing Screen">
+                    <p>Product Grid</p>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot_admin.png" alt="Detail Screen">
+                    <p>Product Detail</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Section -->
+        <div id="tools" class="content-section">
+            <div class="card">
+                <h3>🛠️ Development Tools</h3>
+                <ul>
+                    <li><strong>Provider:</strong> Centralized state management for performance.</li>
+                    <li><strong>Dio:</strong> Robust HTTP networking for future API integration.</li>
+                    <li><strong>Shared Preferences:</strong> Local storage for cart persistence.</li>
+                    <li><strong>Animations:</strong> Animate Do & Staggered Animations for premium feel.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Edit Guide Section -->
+        <div id="edit-guide" class="content-section">
+            <div class="card">
+                <h3>📝 How to Customize</h3>
+                <p>Modify <code>lib/services/mock_api_service.dart</code> to change the products list. Update <code>lib/theme/app_theme.dart</code> to change the primary ocean colors.</p>
+                <br>
+                <div class="urdu">
+                    <strong>اردو میں:</strong> اگر آپ مچھلیوں کے نام یا قیمتیں بدلنا چاہتے ہیں تو <code>mock_api_service.dart</code> فائل میں تبدیلی کریں۔
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>Project by Zeeshan Sarwar | MIT Licensed</p>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+
+    <div class="waves"></div>
+</body>
+</html>
